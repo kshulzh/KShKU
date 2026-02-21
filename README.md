@@ -12,18 +12,11 @@ This repository is organized as a Gradle multi-module build.
 - Build tool: Gradle (wrapper included)
   - Gradle wrapper: 8.10 (see gradle/wrapper/gradle-wrapper.properties)
 - Targets: JVM and Kotlin/Native (host-dependent target selected at build time)
-- Libraries:
-  - kotlinx-coroutines-core
-  - kotlinx-serialization-core, kotlinx-serialization-json
-- Publishing (module-specific): Maven Publish plugin configured in modules
-
 ## Modules overview
 
 ### thread-local
 Cross-platform utilities for local context in threads and coroutines.
 - Targets: JVM + Native (host OS auto-detected in build scripts)
-- Notable deps: coroutines, kotlinx-serialization
-- Publishing: has a GitHub Packages repo configured (see Env Vars below)
 
 ### signals
 Signal/observer helpers with coroutine-friendly APIs.
@@ -33,7 +26,7 @@ Signal/observer helpers with coroutine-friendly APIs.
 
 ### problem-graph
 Composable actions graph with expectations and dispatching utilities.
-- Key packages: `action`, `context`, `expect`, `delegate`, `v2`
+- Key packages: `action`, `context`, `expect`, `delegate`, `v1`
 - Tests demonstrate usage (see `problem-graph/src/commonTest/...`)
 
 ## Requirements
@@ -47,7 +40,7 @@ Gradle wrapper is included, so no local Gradle installation is required.
 ## Getting started
 
 Clone the repository:
-- git clone https://github.com/<your-org-or-user>/KShKU.git
+- git clone https://github.com/kshulzh/KShKU.git
 - cd KShKU
 
 Build all modules:
