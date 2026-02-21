@@ -9,10 +9,6 @@ group = extra["project.group"]!!
 version = extra["project.version"]!!
 
 kotlin {
-    compilerOptions {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
-    }
-
     //jvm
     jvm()
     //native
@@ -24,7 +20,6 @@ kotlin {
         hostOs == "Mac OS X" && arch == "aarch64" -> macosArm64("native")
         hostOs == "Linux" -> linuxX64("native")
         isMingwX64 -> mingwX64("native")
-
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
@@ -36,6 +31,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 kotlin("stdlib")
+                kotlin("reflect")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
             }
         }

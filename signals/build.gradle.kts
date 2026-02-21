@@ -1,6 +1,7 @@
+import java.net.URI
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.kotlin.serialization)
     `maven-publish`
 }
 
@@ -8,8 +9,6 @@ group = extra["project.group"]!!
 version = extra["project.version"]!!
 
 kotlin {
-    compilerOptions.freeCompilerArgs.add("-opt-in=kotlin.uuid.ExperimentalUuidApi")
-
     //jvm
     jvm()
     //native
@@ -35,8 +34,6 @@ kotlin {
                 kotlin("stdlib")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
                 implementation(project(":thread-local"))
-                implementation(libs.kotlinx.serialization.core)
-                implementation(libs.kotlinx.serialization.json)
             }
         }
         val commonTest by getting {
@@ -44,13 +41,17 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val jvmMain by getting {
-            dependencies {
-            }
-        }
-        val jvmTest by getting {
-            dependencies {
-                implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = URI.create("https://maven.pkg.github.com/kshulzh/KShKU")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }

@@ -5,3 +5,4 @@ rootProject.name = "KShKU"
 
 include("thread-local")
 include("signals")
+include("problem-graph")
