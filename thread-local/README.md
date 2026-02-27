@@ -12,12 +12,12 @@ Targets: JVM and Kotlin/Native (host-dependent native target is selected at buil
 
 ## Coordinates
 Inherited from the root project:
-- group: `com.github.kshulzh.kshku`
+- group: `io.github.kshulzh.kshku`
 - version: see repository root `gradle.properties`
 - module: `thread-local`
 
 Maven coordinates (when published):
-- `com.github.kshulzh.kshku:thread-local:<version>`
+- `io.github.kshulzh.kshku:thread-local:<version>`
 
 Local publish for development:
 - Windows: `gradlew.bat :thread-local:publishToMavenLocal`
@@ -26,7 +26,7 @@ Local publish for development:
 Gradle (Kotlin DSL) usage after local publish:
 
 dependencies {
-    implementation("com.github.kshulzh.kshku:thread-local:0.0.1-SNAPSHOT")
+    implementation("io.github.kshulzh.kshku:thread-local:0.0.1-SNAPSHOT")
 }
 
 
@@ -39,7 +39,7 @@ kotlin {
 }
 
 dependencies {
-    commonMainImplementation("com.github.kshulzh.kshku:thread-local:<version>")
+    commonMainImplementation("io.github.kshulzh.kshku:thread-local:<version>")
 }
 
 Notes:
@@ -49,7 +49,7 @@ Notes:
 ## Quick start: thread-local delegate
 Store per-thread state using the property delegate:
 
-import com.github.kshulzh.kshku.local.thread.ThreadLocalContext
+import io.github.kshulzh.kshku.local.thread.ThreadLocalContext
 
 class SessionHolder {
     var current by ThreadLocalContext<String>()::value
@@ -63,7 +63,7 @@ println(holder.current) // user-1
 ## Quick start: coroutine-local hierarchical
 Keep values bound to a coroutine Job and allow parent lookup:
 
-import com.github.kshulzh.kshku.local.coroutine.CoroutineLocalContextHierarchical
+import io.github.kshulzh.kshku.local.coroutine.CoroutineLocalContextHierarchical
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.launch
 
