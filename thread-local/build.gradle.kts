@@ -48,7 +48,7 @@ kotlin {
 mavenPublishing {
     publishToMavenCentral(false)
     signAllPublications()
-    coordinates(group.toString(), "problem-graph", version.toString())
+    coordinates(group.toString(), "tread-local", version.toString())
 
     pom {
         name = "Problem Graph library"
