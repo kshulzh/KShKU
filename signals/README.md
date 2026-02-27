@@ -11,12 +11,12 @@ Targets: JVM and Kotlin/Native (host-dependent native target is selected at buil
 
 ## Coordinates
 Inherited from the root project:
-- group: `com.github.kshulzh.kshku`
+- group: `io.github.kshulzh.kshku`
 - version: see repository root `gradle.properties`
 - module: `signals`
 
 Maven coordinates (when published):
-- `com.github.kshulzh.kshku:signals:<version>`
+- `io.github.kshulzh.kshku:signals:<version>`
 
 For local development you can publish to your local Maven repo and then depend on it:
 - Windows: `gradlew.bat :signals:publishToMavenLocal`
@@ -25,7 +25,7 @@ For local development you can publish to your local Maven repo and then depend o
 Gradle (Kotlin DSL) usage after local publish:
 
 dependencies {
-    implementation("com.github.kshulzh.kshku:signals:0.0.1-SNAPSHOT")
+    implementation("io.github.kshulzh.kshku:signals:0.0.1-SNAPSHOT")
 }
 
 
@@ -38,7 +38,7 @@ kotlin {
 }
 
 dependencies {
-    commonMainImplementation("com.github.kshulzh.kshku:signals:<version>")
+    commonMainImplementation("io.github.kshulzh.kshku:signals:<version>")
 }
 
 Notes:
@@ -67,9 +67,9 @@ You can nest scopes. If a child catcher has no matching handler, the signal is d
 ## Quick start (coroutines + hierarchy)
 CoroutineSignalCatcher stores context per Job and looks up parents when no local handler is present.
 
-import com.github.kshulzh.kshku.signals.CoroutineSignalCatcherImpl
-import com.github.kshulzh.kshku.signals.signal
-import com.github.kshulzh.kshku.signals.signalSuspend
+import io.github.kshulzh.kshku.signals.CoroutineSignalCatcherImpl
+import io.github.kshulzh.kshku.signals.signal
+import io.github.kshulzh.kshku.signals.signalSuspend
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.launch
 

@@ -1,7 +1,6 @@
-import java.net.URI
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    id("com.vanniktech.maven.publish") version "0.36.0"
     `maven-publish`
 }
 
@@ -43,15 +42,38 @@ kotlin {
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = URI.create("https://maven.pkg.github.com/kshulzh/KShKU")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+mavenPublishing {
+    publishToMavenCentral(false)
+    signAllPublications()
+    coordinates(group.toString(), "problem-graph", version.toString())
+
+    pom {
+        name = "Problem Graph library"
+        description = "resolving complex depends problems"
+        inceptionYear = "2026"
+        url = "https://github.com/kshulzh/KShKU"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "https://www.apache.org/licenses/LICENSE-2.0.txt"
             }
+        }
+        developers {
+            developer {
+                id = "kshulzh"
+                name = "Kirill Shulzhenko"
+                url = "https://github.com/kshulzh/"
+                email = "kirill.shulzhenko2000@gmail.com"
+                organization = "kshulzh"
+                organizationUrl = "https://github.com/kshulzh"
+
+            }
+        }
+        scm {
+            url = "https://github.com/kshulzh/KShKU"
+            connection = "scm:git:git://github.com/kshulzh/KShKU.git"
+            developerConnection = "scm:git:ssh://git@github.com/kshulzh/KShKU.git"
         }
     }
 }
