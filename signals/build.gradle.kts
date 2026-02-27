@@ -1,9 +1,6 @@
-import java.net.URI
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     id("com.vanniktech.maven.publish") version "0.36.0"
-    `maven-publish`
 }
 
 group = extra["project.group"]!!
